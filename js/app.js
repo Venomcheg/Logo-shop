@@ -575,7 +575,6 @@ wrap_option.addEventListener("click", function (e) {
 		opt_button.firstElementChild.innerHTML = "Everywhere";
 	}
 });
-
 //let btn = document.querySelectorAll('button[type="submit"],input[type="submit"]');
 let forms = document.querySelectorAll('form');
 if (forms.length > 0) {
@@ -1504,6 +1503,46 @@ if (document.querySelector('.slider-sale')) {
 		mainsliderDotts[index].style.backgroundImage = "url('" + mainsliderImage + "')";
 	}
 }
+
+if (document.querySelector('.product-list__wrap')) {
+	let slider = new Swiper('.product-list__wrap', {
+		/*
+		effect: 'fade',
+		autoplay: {
+			delay: 3000,
+			disableOnInteraction: false,
+		},
+		*/
+		observer: true,
+		observeParents: true,
+		slidesPerView: 1,
+		spaceBetween: 0,
+		autoHeight: true,
+		speed: 800,
+		// spaceBetween: 200,
+		//touchRatio: 0,
+		//simulateTouch: false,
+		// loop: true,
+		//preloadImages: false,
+		//lazy: true,
+		// Dotts
+		pagination: {
+			el: '.slider-products__info',
+			type: "fraction",
+		},
+		// Arrows
+		navigation: {
+			nextEl: '.slider-products__btn_next',
+			prevEl: '.slider-products__btn_prev',
+		},
+		on: {
+			lazyImageReady: function () {
+				ibg();
+			},
+		}
+	});
+}
+
 
 
 
