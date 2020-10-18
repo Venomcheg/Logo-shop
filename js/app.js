@@ -179,6 +179,7 @@ if (spollers.length > 0) {
 	for (let index = 0; index < spollers.length; index++) {
 		const spoller = spollers[index];
 		spoller.addEventListener("click", function (e) {
+
 			if (spoller.classList.contains('_spoller-992') && window.innerWidth > 992) {
 				return false;
 			}
@@ -197,6 +198,7 @@ if (spollers.length > 0) {
 			}
 			spoller.classList.toggle('_active');
 			_slideToggle(spoller.nextElementSibling);
+
 		});
 	}
 }
@@ -520,61 +522,6 @@ animate({
 			Element.prototype.msMatchesSelector;
 	}
 })();
-let options_button = document.querySelector('.search-page__options_button');
-let search_menu = document.querySelector('.search-page__options_categories');
-let wrap_option = document.querySelector('.search-page__options_wrap');
-let checkbox_span = document.querySelectorAll('.checkbox__text');
-let sumcheck = 0;
-let opt_button = document.querySelector('.search-page__options_button');
-
-if (isMobile.any()) {
-	let menuParents = document.querySelectorAll('.menu-page__parent>a');
-	for (let index = 0; index < menuParents.length; index++) {
-		const menuParent = menuParents[index];
-		menuParent.addEventListener("click", function (e) {
-			menuParent.parentElement.classList.toggle('_active');
-			e.preventDefault();
-		});
-	}
-} else {
-	let menuParents = document.querySelectorAll('.menu-page__parent');
-	for (let index = 0; index < menuParents.length; index++) {
-		const menuParent = menuParents[index];
-		menuParent.addEventListener("mouseenter", function (e) {
-			menuParent.classList.add('_active');
-		});
-		menuParent.addEventListener("mouseleave", function (e) {
-			menuParent.classList.remove('_active');
-		});
-	}
-}
-
-let menuPageBurger = document.querySelector('.menu-page__burger');
-let menuPageBody = document.querySelector('.menu-page__body');
-menuPageBurger.addEventListener("click", function (e) {
-	menuPageBurger.classList.toggle('_active');
-	_slideToggle(menuPageBody);
-});
-
-options_button.addEventListener("click", function (e) {
-	options_button.classList.toggle('_active');
-	_slideToggle(search_menu);
-});
-
-wrap_option.addEventListener("click", function (e) {
-	if (e.target.className != "checkbox__text") return;
-	if (e.target.dataset.count == "0") {
-		e.target.dataset.count = "1";
-		sumcheck++;
-	} else {
-		e.target.dataset.count = "0";
-		sumcheck--;
-	}
-	opt_button.firstElementChild.innerHTML = "Selected: " + sumcheck;
-	if (sumcheck == 0) {
-		opt_button.firstElementChild.innerHTML = "Everywhere";
-	}
-});
 //let btn = document.querySelectorAll('button[type="submit"],input[type="submit"]');
 let forms = document.querySelectorAll('form');
 if (forms.length > 0) {
@@ -1738,3 +1685,171 @@ if (document.querySelector('.logos-list__slider')) {
 		//const viewport_width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
 	}
 }());
+let options_button = document.querySelector('.search-page__options_button');
+let search_menu = document.querySelector('.search-page__options_categories');
+let wrap_option = document.querySelector('.search-page__options_wrap');
+let checkbox_span = document.querySelectorAll('.checkbox__text');
+let sumcheck = 0;
+let opt_button = document.querySelector('.search-page__options_button');
+
+if (isMobile.any()) {
+	let menuParents = document.querySelectorAll('.menu-page__parent>a');
+	for (let index = 0; index < menuParents.length; index++) {
+		const menuParent = menuParents[index];
+		menuParent.addEventListener("click", function (e) {
+			menuParent.parentElement.classList.toggle('_active');
+			e.preventDefault();
+		});
+	}
+} else {
+	let menuParents = document.querySelectorAll('.menu-page__parent');
+	for (let index = 0; index < menuParents.length; index++) {
+		const menuParent = menuParents[index];
+		menuParent.addEventListener("mouseenter", function (e) {
+			menuParent.classList.add('_active');
+		});
+		menuParent.addEventListener("mouseleave", function (e) {
+			menuParent.classList.remove('_active');
+		});
+	}
+}
+
+let menuPageBurger = document.querySelector('.menu-page__burger');
+let menuPageBody = document.querySelector('.menu-page__body');
+menuPageBurger.addEventListener("click", function (e) {
+	menuPageBurger.classList.toggle('_active');
+	_slideToggle(menuPageBody);
+});
+
+options_button.addEventListener("click", function (e) {
+	options_button.classList.toggle('_active');
+	_slideToggle(search_menu);
+});
+
+wrap_option.addEventListener("click", function (e) {
+	if (e.target.className != "checkbox__text") return;
+	if (e.target.dataset.count == "0") {
+		e.target.dataset.count = "1";
+		sumcheck++;
+	} else {
+		e.target.dataset.count = "0";
+		sumcheck--;
+	}
+	opt_button.firstElementChild.innerHTML = "Selected: " + sumcheck;
+	if (sumcheck == 0) {
+		opt_button.firstElementChild.innerHTML = "Everywhere";
+	}
+});
+// <div id="slider"></div>
+
+if (document.querySelector('.slider-handles')) {
+	let marginSlider = document.querySelector('.slider-handles');
+
+	noUiSlider.create(marginSlider, {
+		start: [0, 1000],
+		tooltips: [wNumb({ decimals: 0 }), wNumb({ decimals: 0 })],
+		connect: true,
+		range: {
+			'min': 0,
+			'max': 1000
+		}
+	});
+	let inputNumber1 = document.querySelector('.slider-handles__from-num');
+	let inputNumber0 = document.querySelector('.slider-handles__to-num');
+	marginSlider.noUiSlider.on('update', function (values, handle) {
+
+		let value = values[handle];
+
+		if (handle) {
+			inputNumber0.value = Math.round(value);
+		}
+		else {
+			inputNumber1.value = Math.round(value);
+		}
+	});
+
+	inputNumber0.addEventListener('change', function () {
+		marginSlider.noUiSlider.set([null, this.value]);
+	});
+	inputNumber1.addEventListener('change', function () {
+		marginSlider.noUiSlider.set([this.value, null]);
+	});
+}
+
+let compares = document.querySelectorAll(".item-more__compare");
+let compareTitles = document.querySelectorAll(".item-more__title");
+let productList = document.querySelector(".product-list__wrap");
+let dest = document.querySelector(".compare-filter__list");
+let filterWrap = document.querySelector(".compare-filter__wrap");
+
+if (compares && compareTitles) {
+	for (let index = 0; index < compares.length; index++) {
+		compares[index].setAttribute("data-count", index);
+		compareTitles[index].setAttribute("data-count", index);
+	}
+}
+
+productList.addEventListener("click", function (e) {
+	if (e.target.classList != "item-more__compare" && compareTitles == null) return;
+	let div = document.createElement("div");
+	let divImg = document.createElement("div");
+	let p = document.createElement("a");
+	let img = document.createElement('img');
+	div.classList.add("compare-filter__wrap-item");
+	img.classList.add("compare-filter__btn-item");
+	img.setAttribute("src", "../img/icons/chest.png");
+	p.classList.add("compare-filter__itemList-item");
+	let compare = e.target;
+	for (let j = 0; j < compareTitles.length; j++) {
+		if (compare.dataset.count == compareTitles[j].dataset.count) {
+			let compareTitless = compareTitles[j].textContent;
+			div.append(p);
+			div.append(divImg);
+			divImg.append(img);
+			dest.append(div);
+			p.innerHTML = compareTitless;
+		}
+	}
+})
+
+filterWrap.addEventListener("click", function (e) {
+	if (e.target.classList != "compare-filter__btn-item") return;
+	e.target.closest('.compare-filter__wrap-item').remove();
+})
+
+
+//===================================================================================================================================
+// filter Ver. 0.1
+// let price = document.querySelectorAll(".product__price");
+// let selectt = document.querySelector('.select__item');
+// let listSwiper = document.querySelectorAll('.product-list__wrap');
+
+// let massive = [];
+// selectt.addEventListener("click", function (e) {
+// 	let navigation = document.querySelector('.select__value').lastChild.textContent;
+// 	if (massive.includes(navigation, 0)) return;
+// 	massive.push(navigation);
+// 	if (massive.length >= 2) {
+// 		massive.shift();
+// 	}
+// 	let selectValue = document.querySelector('.select_navigation-catalog__select').querySelector(".select__value").textContent;
+
+// 	if (massive[0] == "Lowest price") {
+// 		let listEdit = [];
+// 		for (let index = 0; index < price.length; index++) {
+// 			price[index].textContent = price[index].textContent.split("$", 1);
+// 		}
+// 		price.textContent.sort();
+// 		for (let index = 0; index < listSwiper.length; index++) {
+// 			listSwiper[index].firstChild.remove();
+// 			let itemList = listEdit.slice(0, selectValue);
+
+// 			price.splice(0, selectValue);
+// 			for (let index = 0; index < itemList.length; index++) {
+// 				console.log(itemList[index]);
+// 				itemList[index] = itemList[index].closest('.slider-products__item');
+// 			}
+// 			console.log(itemList);
+// 		}
+// 	}
+// });
