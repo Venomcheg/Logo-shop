@@ -2631,8 +2631,6 @@ body.ie ._ibg img {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
   overflow: hidden;
   margin-bottom: 35px;
 }
@@ -2844,6 +2842,7 @@ body.ie ._ibg img {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  width: 70px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -4694,6 +4693,11 @@ body.ie ._ibg img {
 
   .form-order__list {
     margin-bottom: 30px;
+  }
+
+  .card-good {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
   }
 
   .menu-page__link {
