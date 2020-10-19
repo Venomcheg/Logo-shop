@@ -1553,6 +1553,134 @@ if (document.querySelector('.logos-list__slider')) {
 	});
 }
 
+if (document.querySelector('.gallery-slider')) {
+	let galleryBottom = new Swiper('.gallery-slider__bottom', {
+		/*
+		effect: 'fade',
+		autoplay: {
+			delay: 3000,
+			disableOnInteraction: false,
+		},
+		*/
+		watchSlidesVisibility: true,
+		watchSlidesProgress: true,
+		freeMode: true,
+		observer: true,
+		observeParents: true,
+		slidesPerView: 4,
+		// autoHeight: true,
+		speed: 800,
+		spaceBetween: 10,
+		//touchRatio: 0,
+		//simulateTouch: false,
+		// loop: true,
+		//preloadImages: false,
+		//lazy: true,
+		// Dotts
+		// pagination: {
+		// 	el: '.slider-products__info',
+		// 	type: "fraction",
+		// },
+		// Arrows
+		// navigation: {
+		// 	nextEl: '.logos-list__next',
+		// 	prevEl: '.logos-list__prev',
+		// },
+		// breakpoints: {
+		// 	10: {
+		// 		slidesPerView: 2,
+		// 		spaceBetween: 0,
+		// 		// autoHeight: true,
+		// 	},
+		// 	400: {
+		// 		slidesPerView: 3,
+		// 		spaceBetween: 0,
+		// 		// autoHeight: true,
+		// 	},
+		// 	568: {
+		// 		slidesPerView: 4,
+		// 		// spaceBetween: 20,
+		// 	},
+		// 	992: {
+		// 		slidesPerView: 4,
+		// 		// spaceBetween: 20,
+		// 	},
+		// 	1268: {
+		// 		slidesPerView: 5,
+		// 		// spaceBetween: 30,
+		// 	},
+		// },
+		on: {
+			lazyImageReady: function () {
+				ibg();
+			},
+		}
+	});
+	let galleryTop = new Swiper('.gallery-slider__top', {
+		/*
+		effect: 'fade',
+		autoplay: {
+			delay: 3000,
+			disableOnInteraction: false,
+		},
+		*/
+		observer: true,
+		observeParents: true,
+		slidesPerView: 1,
+		spaceBetween: 50,
+		autoHeight: true,
+		speed: 800,
+		thumbs: {
+			swiper: galleryBottom
+		},
+		// spaceBetween: 50,
+		//touchRatio: 0,
+		//simulateTouch: false,
+		// loop: true,
+		//preloadImages: false,
+		//lazy: true,
+		// Dotts
+		// pagination: {
+		// 	el: '.slider-products__info',
+		// 	type: "fraction",
+		// },
+		// Arrows
+		// navigation: {
+		// 	nextEl: '.logos-list__next',
+		// 	prevEl: '.logos-list__prev',
+		// },
+		// breakpoints: {
+		// 	10: {
+		// 		slidesPerView: 2,
+		// 		spaceBetween: 0,
+		// 		// autoHeight: true,
+		// 	},
+		// 	400: {
+		// 		slidesPerView: 3,
+		// 		spaceBetween: 0,
+		// 		// autoHeight: true,
+		// 	},
+		// 	568: {
+		// 		slidesPerView: 4,
+		// 		// spaceBetween: 20,
+		// 	},
+		// 	992: {
+		// 		slidesPerView: 4,
+		// 		// spaceBetween: 20,
+		// 	},
+		// 	1268: {
+		// 		slidesPerView: 5,
+		// 		// spaceBetween: 30,
+		// 	},
+		// },
+		on: {
+			lazyImageReady: function () {
+				ibg();
+			},
+		}
+	});
+
+}
 
 "use strict";
 
