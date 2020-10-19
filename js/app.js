@@ -1788,35 +1788,37 @@ if (compares && compareTitles) {
 		compareTitles[index].setAttribute("data-count", index);
 	}
 }
-
-productList.addEventListener("click", function (e) {
-	if (e.target.classList != "item-more__compare" && compareTitles == null) return;
-	let div = document.createElement("div");
-	let divImg = document.createElement("div");
-	let p = document.createElement("a");
-	let img = document.createElement('img');
-	div.classList.add("compare-filter__wrap-item");
-	img.classList.add("compare-filter__btn-item");
-	img.setAttribute("src", "../img/icons/chest.png");
-	p.classList.add("compare-filter__itemList-item");
-	let compare = e.target;
-	for (let j = 0; j < compareTitles.length; j++) {
-		if (compare.dataset.count == compareTitles[j].dataset.count) {
-			let compareTitless = compareTitles[j].textContent;
-			div.append(p);
-			div.append(divImg);
-			divImg.append(img);
-			dest.append(div);
-			p.innerHTML = compareTitless;
+if (productList) {
+	productList.addEventListener("click", function (e) {
+		if (e.target.classList != "item-more__compare" && compareTitles == null) return;
+		let div = document.createElement("div");
+		let divImg = document.createElement("div");
+		let p = document.createElement("a");
+		let img = document.createElement('img');
+		div.classList.add("compare-filter__wrap-item");
+		img.classList.add("compare-filter__btn-item");
+		img.setAttribute("src", "../img/icons/chest.png");
+		p.classList.add("compare-filter__itemList-item");
+		let compare = e.target;
+		for (let j = 0; j < compareTitles.length; j++) {
+			if (compare.dataset.count == compareTitles[j].dataset.count) {
+				let compareTitless = compareTitles[j].textContent;
+				div.append(p);
+				div.append(divImg);
+				divImg.append(img);
+				dest.append(div);
+				p.innerHTML = compareTitless;
+			}
 		}
-	}
-})
+	})
+}
 
-filterWrap.addEventListener("click", function (e) {
-	if (e.target.classList != "compare-filter__btn-item") return;
-	e.target.closest('.compare-filter__wrap-item').remove();
-})
-
+if (filterWrap) {
+	filterWrap.addEventListener("click", function (e) {
+		if (e.target.classList != "compare-filter__btn-item") return;
+		e.target.closest('.compare-filter__wrap-item').remove();
+	})
+}
 
 //===================================================================================================================================
 // filter Ver. 0.1
